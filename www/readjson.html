@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var url = "https://danendra.000webhostapp.com/uts/wayahe/appcordova-master/www/json.php";
+        $.getJSON(url, function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                var id_user = field.id_user;
+                var nama = field.nama;
+                var nomor_induk = field.nomor_induk;
+                var email = field.email;
+                $("#listview").append("<a class='item' href='form.html?id_user=" + id_user + "&nama=" + nama + "&nomor_induk=" + nomor_induk + "&email=" + email + "'><span class='item-note'>" + email + "</span><h2>" + nama + " </h2><p>" + nomor_induk + "</p></a>");
+            });
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
+        <a href="readjson.html" class="button button-clear">Beranda</a>
+        <h1 class="title">Daftar Data Customer</h1>
+         <a href="index.html" class="button button-clear">Tambah Data</a>
+    </div>
+    <br/>
+    <br/>
+    <ul class="list" id="listview">
+    </ul>
+</body>
+
+</html>
